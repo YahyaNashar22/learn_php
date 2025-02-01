@@ -2,6 +2,8 @@
 <?php $page_title = 'Add your idea'; ?>
 <?php $page_heading = 'Share your idea with us'; ?>
 
+<!-- I HATE PHP  -->
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
