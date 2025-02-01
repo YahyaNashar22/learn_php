@@ -6,11 +6,11 @@ $db_user = "yahya";
 $db_password = "yahya";
 
  //database source name
-$dsn = "mysql:host=$hostname;db_name:$dbname";
+ $dsn = "mysql:host=$hostname;dbname=$db_name";
 
 $options = [
-    PDO::ATTR_ERRMODE => PDO::ERRMODE_SILENT,
-]
+    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+];
 
 
  ?>

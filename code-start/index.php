@@ -1,4 +1,4 @@
-
+<?php require_once("config.php"); ?>
 <?php $page_title = 'Add your idea'; ?>
 <?php $page_heading = 'Share your idea with us'; ?>
 
@@ -57,6 +57,15 @@
     <hr><br>
 
 
+    <?php 
+        $connection = new PDO($dsn, $db_user, $db_password, $options);
+        $sql = "SELECT * FROM ideasTable;";
+        $statement = $connection->prepare($sql);
+        $statement->execute();
+        $results = $statement-> fetchAll();
+    ?>
+
+
     <table style="width:100%;background:#eee;text-align:center">
         <tr>
             <th>ID</th>
@@ -65,20 +74,14 @@
             <th>Delete</th>
         </tr>
 
-
+        <?php foreach ($results as $row): ?>
         <tr>
-            <th><a href="update.php">#1</a></th>
-            <th>Title 1</th>
-            <th>Text 1</th>
+            <th><a href="update.php"><?php echo $row["id"]; ?></a></th>
+            <th><?php echo $row["title"]; ?></th>
+            <th><?php echo $row["content"]; ?></th>
             <th><a href="delete.php" style="color:red;">X</a></th>
         </tr>
-        <tr>
-            <th><a href="update.php">#2</a></th>
-            <th>Title 2</th>
-            <th>Text 2</th>
-            <th><a href="delete.php" style="color:red;">X</a></th>
-        </tr>
-
+        <?php endforeach; ?>
 
     </table>
 
