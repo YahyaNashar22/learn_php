@@ -13,9 +13,24 @@ class A implements printAge
     {
         echo "$this->age\n";
     }
+
+    function classOne()
+    {
+        echo "I AM THE PARENT CLASS\n";
+    }
 }
 
-class B extends A implements printAge {}
+class B extends A implements printAge
+{
+    function classTwo()
+    {
+        if ($this->age < 10) {
+            echo "I AM THE SUBCLASS\n";
+        } else {
+            parent::classOne();
+        }
+    }
+}
 
 
 $a = new A();
@@ -30,3 +45,6 @@ echo $a->age;
 echo "\n";
 
 $b->displayAge();
+$b->classTwo();
+$b->age = 2;
+$b->classTwo();
